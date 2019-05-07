@@ -27,11 +27,10 @@ catch(Exception ex)
 }*/
 		
 	
-	CompositeLogger cc = new CompositeLogger();
-	/*cc.Register(new ConsoleLog());
+	CompositeLogger cc = new CompositeLogger(2);
+	cc.Register(new ConsoleLog());
 	cc.Register(new FileLog("D:\\log.txt"));
-	cc.LogInformation("this is a log messege");*/
-	System.out.println(cc.getClass());
+	cc.LogInformation("this is a log messege");
 	
 	}
 }

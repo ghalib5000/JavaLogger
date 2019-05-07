@@ -6,8 +6,10 @@ import Main.Base.BaseLogger;
 
 public class ConsoleLog extends BaseLogger implements IConsoleLog
 {
+	
 	public ConsoleLog()
 	{
+		
 		super("this is console logger");	
 	}
 
@@ -19,7 +21,6 @@ public class ConsoleLog extends BaseLogger implements IConsoleLog
 	public void LogInformation(String Messege) 
 	{
 		System.out.println(Messege);
-		System.out.println("hello");
 	}
 
 	public void LogErrors(String Messege, Date date) 
