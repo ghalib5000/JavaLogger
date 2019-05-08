@@ -15,16 +15,25 @@ public class ConsoleLog extends BaseLogger implements IConsoleLog
 
 	public void LogInformation(String Messege, Date date) 
 	{
-		System.out.println(Messege+" at "+date);
+		System.out.print("INFORMATION: ");
+		System.out.println(date+": "+Messege);
 	}
 	public void LogInformation(String Messege) 
 	{
+		System.out.print("INFORMATION: ");
 		System.out.println(Messege);
 	}
 
 	public void LogErrors(String Messege, Date date) 
 	{
-		// TODO Auto-generated method stub
+		System.out.print("ERROR: ");
+		System.out.println(date+": "+ Messege );
+		
+	}
+	public void LogErrors(String Messege) 
+	{
+		System.out.print("ERROR: ");
+		System.out.println(Messege);
 		
 	}
 

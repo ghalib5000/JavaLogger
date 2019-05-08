@@ -55,7 +55,8 @@ public class FileLog extends BaseLogger implements IFileLog
 		   try {
 		   fil.setWritable(true);
 		   f = new FileWriter(fil,true);
-		   f.write(Messege+" at "+date+"\n");
+		   f.write("INFORMATION: ");
+		   f.write(date+": "+Messege+"\n");
 		   fil.setReadOnly();
 		   f.close();	
 		   } 
@@ -72,6 +73,7 @@ public class FileLog extends BaseLogger implements IFileLog
 		  try {	
 		   fil.setWritable(true);
 		   f = new FileWriter(fil,true);
+		   f.write("INFORMATION: ");
 		   f.write(Messege+"\n");
 		   fil.setReadOnly();
 		   f.close();	
@@ -84,10 +86,45 @@ public class FileLog extends BaseLogger implements IFileLog
 	}
 	}
 	public void LogErrors(String Messege, Date date)
-{
-		// TODO Auto-generated method stub
-		
-	}
+	{
+			if(!fil.exists()||fil.canRead()) 
+			{
+				
+			   try {
+			   fil.setWritable(true);
+			   f = new FileWriter(fil,true);
+			   f.write("ERROR: ");
+			   f.write(date+": "+Messege+"\n");
+			   fil.setReadOnly();
+			   f.close();	
+			   } 
+			   catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			   }
+		}
+			
+		}
+	public void LogErrors(String Messege)
+	{
+			if(!fil.exists()||fil.canRead()) 
+			{
+				
+			   try {
+			   fil.setWritable(true);
+			   f = new FileWriter(fil,true);
+			   f.write("ERROR: ");
+			   f.write(Messege+"\n");
+			   fil.setReadOnly();
+			   f.close();	
+			   } 
+			   catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			   }
+		}
+			
+		}
 
 	public void LogWarnings(String Messege, Date date) 
 	{

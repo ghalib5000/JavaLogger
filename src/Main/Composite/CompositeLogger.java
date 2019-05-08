@@ -46,4 +46,26 @@ public void LogInformation(String Messege,Date date)
 	//log.LogInformation(Messege);
 }
 
+public void LogErrors(String Messege,Date date) 
+{
+	for(int i=0;i<listing.size();i++)
+	{
+		temp = (BaseLogger) listing.get(i);
+		temp.LogErrors(Messege,date);
+	}
+	//lister(Messege);
+	//log.LogInformation(Messege);
+}
+public void LogErrors(String Messege) 
+{
+	for(int i=0;i<listing.size();i++)
+	{
+		temp = (BaseLogger) listing.get(i);
+		temp.LogErrors(Messege);
+	}
+	//lister(Messege);
+	//log.LogInformation(Messege);
+}
+
+
 }

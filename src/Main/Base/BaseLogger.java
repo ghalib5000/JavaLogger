@@ -22,32 +22,24 @@ public abstract class BaseLogger extends BaseAbs implements IBaseLogger
 	{
 		
 	}
-	
-	@Override
 	public void LogInformation(String Messege, Date date) 
-	{
-	System.out.println("lol");			
+	{		
 	}
-	
 	public void LogInformation(String Messege)
 	{
-		
-		
 	}
-
-	@Override
 	public void LogErrors(String Messege, Date date)
 	{
 		// TODO Auto-generated method stub
 		
+	}public void LogErrors(String Messege)
+	{
+		// TODO Auto-generated method stub
 	}
 
-	@Override
 	public void LogWarnings(String Messege, Date date) 
 	{
 		// TODO Auto-generated method stub
-		
-		
 	}
 
 }
