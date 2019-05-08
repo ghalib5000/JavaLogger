@@ -10,12 +10,12 @@ public class BaseLogger extends BaseAbs implements IBaseLogger
 	//experimental thing
 	public BaseLogger(int opt)
 	{
-		list = new BaseLogger[opt+1];
+		list = new BaseLogger[opt];
 	}
 	
 	public BaseLogger(String text)
 	{
-		System.out.println(text);
+	System.out.println(text);
 	}
 	public BaseLogger()
 	{

@@ -1,5 +1,5 @@
 package Main;
-import java.io.Console;
+import java.io.*;
 import java.util.*;
 
 import Main.Composite.CompositeLogger;
@@ -25,12 +25,15 @@ catch(Exception ex)
 { 
 	System.out.println(ex);
 }*/
-		
 	
-	CompositeLogger cc = new CompositeLogger(2);
+	CompositeLogger cc = new CompositeLogger();
 	cc.Register(new ConsoleLog());
 	cc.Register(new FileLog("D:\\log.txt"));
+	//cc.Register(new FileLog("D:\\log2.txt"));
 	cc.LogInformation("this is a log messege");
+	
+	
+	
 	
 	}
 }
