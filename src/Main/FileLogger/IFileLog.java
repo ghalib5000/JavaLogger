@@ -1,5 +1,4 @@
 package Main.FileLogger;
-
 import java.util.*;
 
 public interface IFileLog {

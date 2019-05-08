@@ -1,5 +1,4 @@
 package Main.Base;
-
 import java.util.Date;
 
 public interface IBaseLogger {

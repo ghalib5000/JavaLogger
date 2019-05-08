@@ -1,8 +1,9 @@
 package Main.Base;
 
+import java.io.*;
 import java.util.Date;
 
-public class BaseLogger extends BaseAbs implements IBaseLogger 
+public abstract class BaseLogger extends BaseAbs implements IBaseLogger 
 {
 
 	protected BaseLogger[] list;
@@ -25,10 +26,10 @@ public class BaseLogger extends BaseAbs implements IBaseLogger
 	@Override
 	public void LogInformation(String Messege, Date date) 
 	{
-				
+	System.out.println("lol");			
 	}
 	
-	public void LogInformation(String Messege) 
+	public void LogInformation(String Messege)
 	{
 		
 		

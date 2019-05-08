@@ -15,8 +15,7 @@ public class ConsoleLog extends BaseLogger implements IConsoleLog
 
 	public void LogInformation(String Messege, Date date) 
 	{
-		// TODO Auto-generated method stub
-		
+		System.out.println(Messege+" at "+date);
 	}
 	public void LogInformation(String Messege) 
 	{

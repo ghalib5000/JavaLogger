@@ -19,13 +19,15 @@ public class FileLog extends BaseLogger implements IFileLog
 		logLevel = 0;		
 		Date d = new Date();
 	    d =Calendar.getInstance().getTime();
-		try {			
-			f = new FileWriter(fil,true);
-		}
-		catch (IOException e)
-		{
-			System.out.println(e);
-		}		
+		/*
+		 * 	try {			
+				f = new FileWriter(fil,true);
+			}
+			catch (IOException e)
+			{
+				System.out.println(e);
+			}	
+			*/	
 	}
 	public FileLog(String location,int logLevel)
 	{
@@ -34,41 +36,51 @@ public class FileLog extends BaseLogger implements IFileLog
 		this.logLevel = logLevel;
 		Date d = new Date();
 	    d =Calendar.getInstance().getTime();
-		try {			
-			f = new FileWriter(fil);
+	/*
+	 * 	try {			
+	
+			f = new FileWriter(fil,true);
 		}
 		catch (IOException e)
 		{
 			System.out.println(e);
-		}		
+		}	
+		*/	
 	}
-	public void LogInformation(String Messege, Date date) 
+	public void LogInformation(String Messege,Date date) 
 	{
-	   try {
-			f.write(Messege+" logged at "+date);
-			f.close();
-	} catch (IOException e)
-	   {
-		System.out.println(e);
-	}
-	}
-	public void LogInformation(String Messege)
-	{
-		
-	   try {
-		   
-		   for(int i=0;i<Messege.length();i++)
-		   {
-			   f.append(Messege.charAt(i));
-		   }
-		
-			//f.write(Messege);
-			f.close();
-		
+		if(!fil.exists()||fil.canRead()) 
+		{
 			
-	} catch (IOException e)
-	   {
-		System.out.println(e);
+		   try {
+		   fil.setWritable(true);
+		   f = new FileWriter(fil,true);
+		   f.write(Messege+" at "+date+"\n");
+		   fil.setReadOnly();
+		   f.close();	
+		   } 
+		   catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		   }
+	}
+	}
+	public void LogInformation(String Messege) 
+	{
+		if(!fil.exists()||fil.canRead()) 		
+		{
+		  try {	
+		   fil.setWritable(true);
+		   f = new FileWriter(fil,true);
+		   f.write(Messege+"\n");
+		   fil.setReadOnly();
+		   f.close();	
+		}
+			 catch (IOException e)
+			 {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			 }
 	}
 	}
 	public void LogErrors(String Messege, Date date)
@@ -81,13 +93,6 @@ public class FileLog extends BaseLogger implements IFileLog
 	{
 		// TODO Auto-generated method stub
 		
-	}
-
-	
-	protected void finalize( ) throws Throwable
-	{
-		System.out.println("finalize");
-			f.close();
 	}
 	}
 	

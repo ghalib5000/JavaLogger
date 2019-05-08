@@ -1,4 +1,5 @@
 package Main.Composite;
+import java.io.IOException;
 import java.util.*;
 
 import Main.Base.*;
@@ -23,41 +24,26 @@ public void Register(BaseLogger log)
 //	lister(log);
 	listing.add(log);
 }
-/*
-public void lister(BaseLogger log)
+public void LogInformation(String Messege) 
 {
-	while(i<=list.length)
+	for(int i=0;i<listing.size();i++)
 	{
-		if(list[i]==null)
-		{
-			list[i] = log;
-			return;
-		}
-		else
-		{
-			i++;
-		}
+		temp = (BaseLogger) listing.get(i);
+		temp.LogInformation(Messege);
 	}
+	//lister(Messege);
+	//log.LogInformation(Messege);
 }
-public void lister(String Messege)
+
+public void LogInformation(String Messege,Date date) 
 {
-	for(int i=0;i<list.length;i++)
+	for(int i=0;i<listing.size();i++)
 	{
-		if(list[i]!=null)
-		{
-			list[i].LogInformation(Messege);
-		}
+		temp = (BaseLogger) listing.get(i);
+		temp.LogInformation(Messege,date);
 	}
+	//lister(Messege);
+	//log.LogInformation(Messege);
 }
-*/
-	public void LogInformation(String Messege)
-	{
-		for(int i=0;i<listing.size();i++)
-		{
-			temp = (BaseLogger) listing.get(i);
-			temp.LogInformation(Messege);
-		}
-		//lister(Messege);
-		//log.LogInformation(Messege);
-	}
+
 }
