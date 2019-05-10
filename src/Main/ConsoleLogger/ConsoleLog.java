@@ -42,6 +42,9 @@ public class ConsoleLog extends BaseLogger implements IConsoleLog
 		// TODO Auto-generated method stub
 		
 	}
-
+public void exit()
+{
+	
+}
 	
 }

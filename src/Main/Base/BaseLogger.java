@@ -41,5 +41,8 @@ public abstract class BaseLogger extends BaseAbs implements IBaseLogger
 	{
 		// TODO Auto-generated method stub
 	}
-
+public void exit()
+{
+	
+}
 }

@@ -66,6 +66,13 @@ public void LogErrors(String Messege)
 	//lister(Messege);
 	//log.LogInformation(Messege);
 }
-
+public void exit()
+{
+	for(int i=0;i<listing.size();i++)
+	{
+		temp = (BaseLogger) listing.get(i);
+		temp.exit();
+	}
+}
 
 }

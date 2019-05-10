@@ -1,5 +1,6 @@
 package Main;
 import java.io.*;
+import java.nio.channels.FileLock;
 import java.util.*;
 
 import Main.Composite.CompositeLogger;
@@ -7,8 +8,11 @@ import Main.ConsoleLogger.ConsoleLog;
 import Main.FileLogger.*;
 
 public class mainClass {
-	//static 	CompositeLogger cc = new CompositeLogger();
+	
 	public static void main(String[] args) {
+		
+		synchronized (Thread.currentThread())
+	 {
 	Date d2 = new Date();
 		
 	    d2 =Calendar.getInstance().getTime();
@@ -21,14 +25,18 @@ public class mainClass {
 	cc.Register(new ConsoleLog());
 	cc.Register(new FileLog("D:\\log.txt"));
 	//cc.Register(new FileLog("D:\\log2.txt"));
-	cc.LogInformation("this is a log message");
+	//cc.LogInformation("this is a log message");
 	cc.LogInformation("this is a log message",d2);
-	System.out.println(aa[5]);
+	Thread.sleep(10000);
+	cc.exit();
+	System.out.println("exited");
+	//System.out.println(aa[5]);
 	}
 	catch(Exception ex)
 	{
 		d2 =Calendar.getInstance().getTime();
-		cc.LogErrors(ex+" this is an error message ",d2);
-	}
+		//cc.LogErrors(ex+" this is an error message ",d2);
+		}
+   	  }
 	}
 }

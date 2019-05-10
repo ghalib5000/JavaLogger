@@ -1,5 +1,7 @@
 package Main.FileLogger;
 import java.io.*;
+import java.nio.file.*;
+import java.nio.file.attribute.*;
 import java.util.*;
 
 import Main.Base.BaseLogger;
@@ -49,33 +51,33 @@ public class FileLog extends BaseLogger implements IFileLog
 	}
 	public void LogInformation(String Messege,Date date) 
 	{
-		if(!fil.exists()||fil.canRead()) 
+		synchronized (fil)
 		{
-			
 		   try {
 		   fil.setWritable(true);
 		   f = new FileWriter(fil,true);
 		   f.write("INFORMATION: ");
 		   f.write(date+": "+Messege+"\n");
-		   fil.setReadOnly();
-		   f.close();	
+		   //fil.setReadOnly();
+		  //f.close();	
 		   } 
 		   catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		   }
-	}
+		}
 	}
 	public void LogInformation(String Messege) 
 	{
-		if(!fil.exists()||fil.canRead()) 		
-		{
-		  try {	
-		   fil.setWritable(true);
+		synchronized (fil)
+		 {
+		  try 
+		  {
+		  // fil.setWritable(true);
 		   f = new FileWriter(fil,true);
 		   f.write("INFORMATION: ");
 		   f.write(Messege+"\n");
-		   fil.setReadOnly();
+		  // fil.setReadOnly();
 		   f.close();	
 		}
 			 catch (IOException e)
@@ -87,35 +89,38 @@ public class FileLog extends BaseLogger implements IFileLog
 	}
 	public void LogErrors(String Messege, Date date)
 	{
-			if(!fil.exists()||fil.canRead()) 
+		synchronized (fil)		 
 			{
-				
+				//fil.setExecutable(false);
 			   try {
-			   fil.setWritable(true);
-			   f = new FileWriter(fil,true);
-			   f.write("ERROR: ");
-			   f.write(date+": "+Messege+"\n");
-			   fil.setReadOnly();
-			   f.close();	
-			   } 
-			   catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			   }
+				    //fil.setWritable(false);
+				   f = new FileWriter(fil,true);
+				   f.write("INFORMATION: ");
+				   f.write(date+": "+Messege+"\n");
+				  // fil.setReadOnly();
+				   f.close();	
+				}
+					 catch (IOException e)
+					 {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+			}
 		}
-			
-		}
+	}
+		
 	public void LogErrors(String Messege)
 	{
-			if(!fil.exists()||fil.canRead()) 
-			{
+		synchronized (fil)
+		 {
+			
 				
 			   try {
-			   fil.setWritable(true);
+			   //fil.setWritable(true);
 			   f = new FileWriter(fil,true);
 			   f.write("ERROR: ");
 			   f.write(Messege+"\n");
-			   fil.setReadOnly();
+			   
+			   //fil.setReadOnly();
 			   f.close();	
 			   } 
 			   catch (IOException e) {
@@ -130,6 +135,15 @@ public class FileLog extends BaseLogger implements IFileLog
 	{
 		// TODO Auto-generated method stub
 		
+	}
+	public void exit()
+	{
+		try {
+			f.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	}
 	
